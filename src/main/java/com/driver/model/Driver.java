@@ -19,7 +19,7 @@ public class Driver {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int driverId;
-    private String mobNo;
+    private String mobile;
     private String password;
     @OneToOne(mappedBy = "driver", cascade = CascadeType.ALL)
     Cab cab;

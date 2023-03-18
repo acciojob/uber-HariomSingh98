@@ -11,6 +11,9 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 
+@Getter
+@Setter
+
 
 public class Cab {
     @Id
@@ -22,35 +25,5 @@ public class Cab {
     @JoinColumn
     Driver driver;
 
-    public int getId() {
-        return id;
-    }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public int getPerKmRate() {
-        return perKmRate;
-    }
-
-    public void setPerKmRate(int perKmRate) {
-        this.perKmRate = perKmRate;
-    }
-
-    public boolean getAvailable() {
-        return available;
-    }
-
-    public void setAvailable(boolean available) {
-        this.available = available;
-    }
-
-    public Driver getDriver() {
-        return driver;
-    }
-
-    public void setDriver(Driver driver) {
-        this.driver = driver;
-    }
 }
