@@ -13,20 +13,32 @@ import com.driver.repository.DriverRepository;
 public class DriverServiceImpl implements DriverService {
 
 	@Autowired
-	DriverRepository driverRepository3;
+	DriverRepository driverRepo3;
 
 	@Autowired
-	CabRepository cabRepository3;
+	CabRepository cabRepo3;
 
 	@Override
 	public void register(String mobile, String password){
 		//Save a driver in the database having given details and a cab with ratePerKm as 10 and availability as True by default.
 
+		Driver driver= new Driver();
+		driver.setPassword(password);
+		driver.setMobNo(mobile);
+
+		Cab cab= new Cab();
+		cab.setAvailable(true);
+		cab.setDriver(driver);
+		cab.setPerKmRate(10);
+
+		driverRepo3.save(driver);
 	}
 
 	@Override
 	public void removeDriver(int driverId){
 		// Delete driver without using deleteById function
+		Driver driver= driverRepo3.findById(driverId).get();
+		driverRepo3.delete(driver);
 
 	}
 
@@ -34,5 +46,8 @@ public class DriverServiceImpl implements DriverService {
 	public void updateStatus(int driverId){
 		//Set the status of respective car to unavailable
 
+		Driver driver= driverRepo3.findById(driverId).get();
+		driver.getCab().setAvailable(false);
+		driverRepo3.save(driver);
 	}
 }
