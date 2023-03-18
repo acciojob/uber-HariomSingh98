@@ -1,5 +1,6 @@
 package com.driver.model;
 
+import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -13,14 +14,12 @@ import javax.persistence.Id;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@Setter
 @Getter
-
-
+@Setter
 public class Admin {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int adminId;
-    private String userName;
+    private String username;
     private String password;
 }

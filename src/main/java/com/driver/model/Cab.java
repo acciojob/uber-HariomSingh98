@@ -10,20 +10,21 @@ import javax.persistence.*;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-
 @Getter
 @Setter
-
-
 public class Cab {
-    @Id
+    @javax.persistence.Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private int Id;
     private int perKmRate;
     private boolean available;
+
+    //Mapping Cab-Driver
     @OneToOne
     @JoinColumn
-    Driver driver;
+    private Driver driver;
 
-
+    public boolean getAvailable() {
+        return available;
+    }
 }

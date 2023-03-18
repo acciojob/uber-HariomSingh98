@@ -12,17 +12,19 @@ import java.util.List;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@Setter
 @Getter
-
+@Setter
 public class Driver {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int driverId;
     private String mobile;
     private String password;
+
+    //Mapping Driver-Cab
     @OneToOne(mappedBy = "driver", cascade = CascadeType.ALL)
-    Cab cab;
+    private Cab cab;
+    //Mapping Driver-TripBooking
     @OneToMany(mappedBy = "driver", cascade = CascadeType.ALL)
-    List<TripBooking> tripBookingList = new ArrayList<>();
+    private List<TripBooking> tripBookingList = new ArrayList<>();
 }

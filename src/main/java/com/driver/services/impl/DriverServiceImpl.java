@@ -13,10 +13,10 @@ import com.driver.repository.DriverRepository;
 public class DriverServiceImpl implements DriverService {
 
 	@Autowired
-	DriverRepository driverRepo3;
+	DriverRepository driverRepository3;
 
 	@Autowired
-	CabRepository cabRepo3;
+	CabRepository cabRepository3;
 
 	@Override
 	public void register(String mobile, String password){
@@ -32,20 +32,20 @@ public class DriverServiceImpl implements DriverService {
 		//set cab for driver
 		driver.setCab(cab);
 		//save driver and cab will be saved automatically
-		driverRepo3.save(driver);
+		driverRepository3.save(driver);
 	}
 
 	@Override
 	public void removeDriver(int driverId){
 		// Delete driver without using deleteById function
-		driverRepo3.deleteById(driverId);
+		driverRepository3.deleteById(driverId);
 	}
 
 	@Override
 	public void updateStatus(int driverId){
 		//Set the status of respective car to unavailable
-		Driver driver = driverRepo3.findById(driverId).get();
+		Driver driver = driverRepository3.findById(driverId).get();
 		driver.getCab().setAvailable(false);
-		driverRepo3.save(driver);
+		driverRepository3.save(driver);
 	}
 }

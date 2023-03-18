@@ -12,16 +12,17 @@ import java.util.List;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@Setter
 @Getter
-
+@Setter
 public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int customerId;
-    private String mobNo;
+    private String mobile;
     private String password;
+
+    //Mapping Customer-TripBooking
     @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
-    List<TripBooking> tripBookingList = new ArrayList<>();
+    private List<TripBooking> tripBookingList = new ArrayList<>();
 
 }

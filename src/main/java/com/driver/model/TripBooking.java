@@ -10,25 +10,27 @@ import javax.persistence.*;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@Setter
 @Getter
-
-public  class TripBooking{
+@Setter
+public class TripBooking {
     @Id
+
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int tripBookingId;
-
     private String fromLocation;
     private String toLocation;
-    private int bill;
     private int distanceInKm;
-    @Enumerated(EnumType.STRING)
-    private TripStatus tripStatus;
+    @Enumerated(value = EnumType.STRING)
+    private TripStatus status;
+    private int bill;
+
+    //Mapping TripBooking-Customer
     @ManyToOne
     @JoinColumn
-    Driver driver;
+    private Customer customer;
+    //Mapping TripBooking-Driver
     @ManyToOne
     @JoinColumn
-    Customer customer;
+    private Driver driver;
 
 }
